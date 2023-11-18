@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
 
-console.log("v3");
-
 const ALPHABET_MAPPING = {
   a: "а",
   b: "б",
@@ -35,6 +33,8 @@ const ALPHABET_MAPPING = {
   yo: "ё",
 };
 
+console.log("v4")
+
 function App() {
   const [text, setText] = useState("");
   const [icon, setIcon] = useState("fas fa-copy");
@@ -58,7 +58,7 @@ function App() {
         i++; // skip the next character
       } else if (currentChar === "s" && nextChar === "h") {
         result += "ш";
-        i++; // skip the next character
+        // no need to skip the next character for "sh"
       } else if (currentChar === "c" && nextChar === "h") {
         result += "ч";
         i++; // skip the next character
