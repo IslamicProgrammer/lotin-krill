@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
 
+console.log("v: 2.0.0")
+
 const ALPHABET_MAPPING = {
   a: "а",
   b: "б",
