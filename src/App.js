@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
 
-console.log("v: 2.0.0")
-
 const ALPHABET_MAPPING = {
   a: "а",
   b: "б",
@@ -60,7 +58,7 @@ function App() {
         result += "ғ";
         i++; // skip the next character
       } else if (currentChar === "s" && nextChar === "h") {
-        result += "сх";
+        result += "ш";
         i++; // skip the next character
       } else if (currentChar === "c" && nextChar === "h") {
         result += "ч";
