@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
 
+console.log("v3");
+
 const ALPHABET_MAPPING = {
   a: "а",
   b: "б",
@@ -30,8 +32,6 @@ const ALPHABET_MAPPING = {
   "'": "",
   ch: "Ч",
   sh: "ш",
-  ye: "е",
-  ya: "я",
   yo: "ё",
 };
 
@@ -41,8 +41,7 @@ function App() {
 
   const resultRef = useRef(null);
 
-  const setTextHandler = (e) => {
-    const inputText = e.target.value.toLowerCase();
+  const convertToKrill = (inputText) => {
     let result = "";
 
     for (let i = 0; i < inputText.length; i++) {
@@ -77,11 +76,18 @@ function App() {
       }
     }
 
-    setIcon("fas fa-copy");
-    setText(result);
+    return result;
   };
 
-  function copyDivToClipboard() {
+  const setTextHandler = (e) => {
+    const inputText = e.target.value.toLowerCase();
+    const krillText = convertToKrill(inputText);
+
+    setIcon("fas fa-copy");
+    setText(krillText);
+  };
+
+  const copyDivToClipboard = () => {
     const range = document.createRange();
     range.selectNode(resultRef.current);
     window.getSelection().removeAllRanges();
@@ -89,7 +95,7 @@ function App() {
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
     setIcon("fas fa-check");
-  }
+  };
 
   return (
     <div className="App">
