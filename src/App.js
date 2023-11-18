@@ -33,8 +33,6 @@ const ALPHABET_MAPPING = {
   yo: "ё",
 };
 
-console.log("v4")
-
 function App() {
   const [text, setText] = useState("");
   const [icon, setIcon] = useState("fas fa-copy");
@@ -48,17 +46,16 @@ function App() {
       const currentChar = inputText[i];
       const nextChar = i < inputText.length - 1 ? inputText[i + 1] : null;
 
-      if (ALPHABET_MAPPING[currentChar]) {
-        result += ALPHABET_MAPPING[currentChar];
-      } else if (currentChar === "o" && nextChar === "'") {
+       if (currentChar === "o" && nextChar === "'") {
         result += "ў";
         i++; // skip the next character
       } else if (currentChar === "g" && nextChar === "'") {
         result += "ғ";
         i++; // skip the next character
       } else if (currentChar === "s" && nextChar === "h") {
+	  console.log("bingo")
         result += "ш";
-        // no need to skip the next character for "sh"
+        i++; // skip the next character
       } else if (currentChar === "c" && nextChar === "h") {
         result += "ч";
         i++; // skip the next character
@@ -71,9 +68,9 @@ function App() {
       } else if (currentChar === "y" && nextChar === "o") {
         result += "ё";
         i++; // skip the next character
-      } else {
-        result += currentChar;
-      }
+      } else if (ALPHABET_MAPPING[currentChar]) {
+        result += ALPHABET_MAPPING[currentChar];
+      } 
     }
 
     return result;
